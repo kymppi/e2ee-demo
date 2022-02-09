@@ -45,6 +45,17 @@ Please adhere to this project's `code of conduct`.
 | `access_token` | `string` | **Required**. Access Token |
 | `to`           | `string` | **Required**. The Receiver |
 
+#### Create User
+
+```http
+  POST /auth/register
+```
+
+| Parameter  | Type     | Description            |
+| :--------- | :------- | :--------------------- |
+| `email`    | `string` | **Required**. Email    |
+| `password` | `string` | **Required**. Password |
+
 ## Feedback
 
 If you have any feedback, please reach out to us at support@midka.dev or open a discussion.
