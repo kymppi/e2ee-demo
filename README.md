@@ -16,7 +16,7 @@ See in the language's README.md for usage.
 
 #### Is the correct way to implement it
 
-No, definitely no, i'm not a professional, but a student.
+No, definitely no, i'm not a professional, but a student. If there are any errors, feel free to fix them and follow [contributing guidelines](#contributing).
 
 #### Can i implement this with other languages than the ones in the project
 
