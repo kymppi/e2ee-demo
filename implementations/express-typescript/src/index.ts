@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser } from './auth.service';
+import { createUser, getUser } from './auth.service';
 import { Database } from './database/database.service';
 
 (async () => {
@@ -24,12 +24,26 @@ import { Database } from './database/database.service';
       return res.status(400).send('Missing email or password');
     }
 
-    try {
-      const user = createUser(email, password, db);
-      res.send(user);
-    } catch (err) {
-      res.status(400).send(err);
+    const user = await createUser(email, password, db);
+
+    if (user == 'User already exists')
+      return res.status(400).send('User already exists');
+
+    return res.status(200).send(user);
+  });
+
+  app.get('/user/:email', async (req, res) => {
+    const { email } = req.params;
+
+    if (!email) {
+      return res.status(400).send('Missing email');
     }
+
+    const user = await getUser(email, db);
+
+    if (!user) return res.status(404).send('User does not exist');
+
+    return res.status(200).send(user);
   });
 
   app.listen(PORT, () => {
